@@ -23,7 +23,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 4922571499733107428
       m_GuidHigh: 6888095148684518776
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.045771144, y: 0.05}
+    m_SpecifySize: 1
     m_Name: Woman_Picture
     m_Texture: {fileID: 0}
