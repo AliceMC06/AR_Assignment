@@ -9,7 +9,7 @@ public class ImageTracker : MonoBehaviour
 
     [SerializeField]
     ARTrackedImageManager m_ImageManager;
-    public GameObject turbinePrefab;
+    public GameObject FaceModelPrefab;
 
 void OnEnable() => m_ImageManager.trackablesChanged.AddListener(OnChanged);
 
@@ -19,7 +19,7 @@ void OnChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
 {
         foreach (var newImage in eventArgs.added)
         {
-            GameObject newObject = Instantiate(turbinePrefab);
+            GameObject newObject = Instantiate(FaceModelPrefab);
             newObject.transform.SetParent(newImage.transform, false);
 
         // Handle added event
