@@ -2,33 +2,32 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 using SimpleJSON;
+using TMPro;
 
 public class GetData : MonoBehaviour
 {
-    public string DataURL;
+    public int[] years = {1950, 1975, 2000, 2025};
+    public float[] temps = {9.8f, 10.2f, 10.4f, 11.5f};
+
+    public TextMeshProUGI tempText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(getData());
+        ShowData(0);
     }
 
-    IEnumerator getData()
+    public void ShowData(int index)
     {
-        using (UnityWebRequest request = UnityWebRequest.Get(DataURL))
-        {
-            yield return request.SendWebRequest();
+        if (index < 0 || index >= temps.Length)
+        return;
 
-            if (request.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.LogError(request.error);
-            }
-            else
-            {
-                string json = request.downloadHandler.text;
-                Debug.Log(json);
-            }
-        }
+        int year = years[index];
+        float temp = temps[index];
+
+        tempText.text = year + "\n" +temp.ToString("F1") + "*C";
+
+        Debug.Log("Year: " + year + " Temp: " + temp);
     }
 
 
